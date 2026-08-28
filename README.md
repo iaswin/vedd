@@ -16,34 +16,7 @@ The application allows a teacher to upload a question paper and a student's hand
 
 The application uses **Google Gemini Flash 3.5** for AI-powered extraction, answer understanding, mapping, and prediction/assessment.
 
-The general processing flow is:
 
-
-Question Paper
-      │
-      ▼
-Question Extraction
-      │
-      ▼
-Structured Questions
-      │
-      │
-Student Answer Sheet
-      │
-      ▼
-Answer Extraction
-      │
-      ▼
-Answer Mapping
-      │
-      ▼
-Question ↔ Answer
-      │
-      ▼
-Answer Region Highlighting
-      │
-      ▼
-Assessment / Feedback
 
 
 Frontend
