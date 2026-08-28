@@ -1,0 +1,1070 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
+/* =========================================================
+   LOADING PAGE ONLY
+   ========================================================= */
+
+.loading-page {
+  width: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 12px;
+
+  overflow: hidden;
+
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.loading-page *,
+.loading-page *::before,
+.loading-page *::after {
+  box-sizing: border-box;
+}
+
+
+
+.loading-page .sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  z-index: 100;
+}
+
+
+    
+
+.loading-page .collapsed-sidebar {
+  position: fixed;
+
+  top: 12px;
+  left: 10px;
+  bottom: 12px;
+
+  width: 72px;
+
+  padding: 12px 14px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  z-index: 50;
+}
+
+
+/* =========================================================
+   COLLAPSED LOGO
+   ========================================================= */
+
+.loading-page .collapsed-logo {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-page .collapsed-logo img {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+}
+
+
+
+
+.loading-page .collapsedaitoolkit {
+  width: 44px;
+  height: 42px;
+
+  margin-top: 28px;
+  padding: 0;
+
+  border: 4px solid transparent;
+  border-radius: 100px;
+
+  background:
+    linear-gradient(#303030, #303030) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.loading-page .collapsedaitoolkit:hover {
+  background:
+    linear-gradient(#222222, #222222) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+}
+
+
+
+.loading-page .collapsed-navigation {
+  width: 44px;
+
+  margin-top: 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.loading-page .collapsed-navigation-item {
+  width: 42px;
+  height: 38px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #7b7b7b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.loading-page .collapsed-navigation-item:hover {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+.loading-page .collapsed-navigation-item.active {
+  background: #eeeeee;
+  color: #252525;
+}
+
+
+
+
+.loading-page .menu-icon {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   COLLAPSED BOTTOM
+   ========================================================= */
+
+.loading-page .collapsed-bottom {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   COLLAPSED SCHOOL LOGO
+   ========================================================= */
+
+.loading-page .collapsed-school-logo {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  background: #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.loading-page .collapsed-school-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+
+.loading-page .expand-sidebar-button {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 1px solid #dedede;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #666666;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.loading-page .expand-sidebar-button:hover {
+  background: #f5f5f5;
+  border-color: #cfcfcf;
+  color: #303030;
+}
+
+
+/* =========================================================
+   EXPANDED SIDEBAR
+   ========================================================= */
+
+.loading-page .sidebar {
+  position: fixed;
+
+  top: 12px;
+  left: 12px;
+  bottom: 12px;
+
+  width: 304px;
+
+  padding: 20px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  display: none;
+  flex-direction: column;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  z-index: 50;
+}
+
+.loading-page.sidebar-expanded .collapsed-sidebar {
+  display: none;
+}
+
+.loading-page.sidebar-expanded .sidebar {
+  display: flex;
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+   ========================================================= */
+
+.loading-page .sidebar-header {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-shrink: 0;
+}
+
+.loading-page .sidebar-logo {
+  width: 136px;
+  height: 40px;
+
+  max-width: 60%;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   COLLAPSE BUTTON
+   ========================================================= */
+
+.loading-page .collapse-sidebar-button {
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #777777;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.loading-page .collapse-sidebar-button:hover {
+  background: #f5f5f5;
+  color: #303030;
+}
+
+
+/* =========================================================
+   AI TOOLKIT
+   ========================================================= */
+
+.loading-page .toolkit-button {
+  width: 100%;
+  height: 42px;
+
+  margin-top: clamp(24px, 6vh, 100px);
+  padding: 0 16px;
+
+  border: 4px solid transparent;
+  border-radius: 28px;
+
+  background:
+    linear-gradient(#303030, #303030) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+}
+
+.loading-page .toolkit-button span {
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
+
+.loading-page .navigation {
+  width: 100%;
+
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.loading-page .navigation-item {
+  width: 100%;
+  height: 38px;
+
+  padding: 9px 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #7b7b7b;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 15px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.loading-page .navigation-item:hover {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+.loading-page .navigation-item.active {
+  background: #eeeeee;
+  color: #252525;
+}
+
+.loading-page .navigation-item span {
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.loading-page .sidebar-bottom {
+  width: 100%;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+}
+
+.loading-page .settings-button {
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   SCHOOL CARD
+   ========================================================= */
+
+.loading-page .school-card {
+  width: 100%;
+  height: 84px;
+
+  padding: 12px 14px;
+
+  background: #f0f0f0;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  overflow: hidden;
+}
+
+.loading-page .school-logo {
+  width: 59px;
+  height: 60px;
+
+  background: #ffffff;
+
+  border-radius: 25%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+.loading-page .school-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.loading-page .school-info {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 5px;
+
+  overflow: hidden;
+}
+
+.loading-page .school-name {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 140%;
+
+  color: #333333;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading-page .school-location {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 140%;
+
+  color: #777777;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.loading-page .main-content {
+  width: calc(100% - 84px);
+  height: 100%;
+
+  margin-left: 84px;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  overflow: hidden;
+}
+
+.loading-page.sidebar-expanded .main-content {
+  width: calc(100% - 328px);
+  margin-left: 328px;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.loading-page .navbar {
+  width: 100%;
+  min-height: 56px;
+
+  padding: 8px 12px 8px 24px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR LEFT
+   ========================================================= */
+
+.loading-page .navbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.loading-page .back-button {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.loading-page .back-button:hover {
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.loading-page .page-title {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  color: #303030;
+
+  white-space: nowrap;
+}
+
+.loading-page .page-title-icon {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.loading-page .mobile-title {
+  display: none;
+}
+
+
+/* =========================================================
+   NAVBAR RIGHT
+   ========================================================= */
+
+.loading-page .navbar-right {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   NAVBAR ICONS
+   ========================================================= */
+
+.loading-page .navbar-icon {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.loading-page .navbar-icon:hover {
+  background: #f5f5f5;
+}
+
+.loading-page .navbar-icon img {
+  width: 36px;
+  height: 36px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.loading-page .profile {
+  height: 40px;
+
+  padding-left: 8px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  white-space: nowrap;
+}
+
+.loading-page .profile-image {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+}
+
+.loading-page .profile-name {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #303030;
+}
+
+.loading-page .profile-arrow {
+  color: #777777;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.loading-page .mobile-menu-button {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.loading-page .mobile-menu-button:hover {
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   LOADING CARD
+   ========================================================= */
+
+.loading-page .loading-card {
+  width: 100%;
+
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  display: flex;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LOADING CONTAINER
+   ========================================================= */
+
+.loading-page .loading-container {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  overflow-y: auto;
+}
+
+.loading-page .loading-content {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   LOADING IMAGE
+   ========================================================= */
+
+.loading-page .loading-icon {
+  width: 96px;
+  height: 96px;
+
+  margin-bottom: 18px;
+
+  object-fit: contain;
+
+  animation: loading-sparkle-animation 1.6s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   LOADING TITLE
+   ========================================================= */
+
+.loading-page .loading-title {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 24px;
+  font-weight: 600;
+
+  line-height: 120%;
+
+  color: #303030;
+}
+
+
+/* =========================================================
+   LOADING MESSAGE
+   ========================================================= */
+
+.loading-page .loading-message {
+  margin: 8px 0 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 140%;
+
+  color: #777777;
+}
+
+
+/* =========================================================
+   LOADING ANIMATION
+   ========================================================= */
+
+@keyframes loading-sparkle-animation {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 1023px) {
+
+  .loading-page .collapsed-sidebar {
+    display: none;
+  }
+
+  .loading-page .sidebar {
+    display: flex;
+
+    width: min(304px, 84vw);
+
+    transform: translateX(calc(-100% - 24px));
+
+    transition: transform 0.25s ease;
+  }
+
+  .loading-page .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .loading-page .main-content,
+  .loading-page.sidebar-expanded .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .loading-page .mobile-menu-button {
+    display: flex;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .loading-page {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .loading-page .navbar {
+    padding: 8px 10px;
+  }
+
+  .loading-page .desktop-title,
+  .loading-page .page-title-icon {
+    display: none;
+  }
+
+  .loading-page .mobile-title {
+    display: inline;
+  }
+
+  .loading-page .help-button,
+  .loading-page .premium-button {
+    display: none;
+  }
+
+  .loading-page .profile-name,
+  .loading-page .profile-arrow {
+    display: none;
+  }
+
+  .loading-page .loading-icon {
+    width: 76px;
+    height: 76px;
+  }
+
+  .loading-page .loading-title {
+    font-size: 22px;
+  }
+
+  .loading-page .loading-message {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .loading-page .navbar-right {
+    gap: 4px;
+  }
+
+  .loading-page .navbar-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .loading-page .navbar-icon img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .loading-page .profile-image {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .loading-page .loading-icon {
+    animation: none;
+  }
+}

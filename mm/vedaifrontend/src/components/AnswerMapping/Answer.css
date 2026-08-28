@@ -1,0 +1,1523 @@
+/* ==========================================================================
+   Root / viewport reset
+   ========================================================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Assessment / Answer page only
+   ========================================================================== */
+
+.answer-page {
+  position: relative;
+  --bg-app: #f4f5f7;
+  --bg-panel: #ffffff;
+  --border: #e6e8ec;
+
+  --text-primary: #14171f;
+  --text-secondary: #6b7280;
+  --text-muted: #9aa1ac;
+
+  --brand: #ff6a3d;
+  --brand-soft: #fff1ea;
+
+  --score-full-bg: #e6f7ec;
+  --score-full-text: #16a34a;
+
+  --score-partial-bg: #fff4e0;
+  --score-partial-text: #d97706;
+
+  --score-zero-bg: #fdecec;
+  --score-zero-text: #dc2626;
+
+  --score-unknown-bg: #f1f2f4;
+  --score-unknown-text: #9aa1ac;
+
+  --panel-dark: #1c2029;
+  --panel-dark-text: #f5f6f8;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 1px 2px rgba(16, 20, 30, 0.04);
+
+
+
+  background: var(--bg-app);
+  color: var(--text-primary);
+
+   width: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  gap: 12px;
+
+  overflow: hidden;
+
+  font-family: "Inter", Arial, sans-serif;
+}
+
+/* Make sure nothing from this page leaks out */
+.answer-page *,
+.answer-page *::before,
+.answer-page *::after {
+  box-sizing: border-box;
+}
+
+.answer-page button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.answer-page button:focus-visible,
+.answer-page [tabindex]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .answer-page *,
+  .answer-page *::before,
+  .answer-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   Collapsed sidebar
+   ========================================================================== */
+
+.answer-page .collapsed-sidebar {
+position: fixed;
+
+  top: 12px;
+  left: 10px;
+  bottom: 12px;
+
+  width: 72px;
+
+  padding: 12px 14px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  z-index: 50;
+}
+
+.answer-page.sidebar-expanded .collapsed-sidebar {
+  display: none;
+}
+
+.answer-page .collapsed-logo {
+width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--panel-dark);
+}
+
+.answer-page .logo-mark-image {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+}
+
+
+.answer-page .collapsedaitoolkit {
+  width: 44px;
+  height: 42px;
+
+  margin-top: 28px;
+  padding: 0;
+
+  border: 4px solid transparent;
+  border-radius: 100px;
+
+  background:
+    linear-gradient(#303030, #303030) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.answer-page .collapsedaitoolkit:hover {
+  background:
+    linear-gradient(#222222, #222222) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+}
+
+
+.answer-page .collapsed-navigation-item {
+  width: 42px;
+  height: 38px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #7b7b7b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.answer-page .collapsed-navigation-item:hover {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+.answer-page .collapsed-navigation-item.active {
+  background: #eeeeee;
+  color: #252525;
+}
+
+
+.answer-page .nav-icon {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+}
+
+.answer-page .collapsed-bottom {
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.answer-page .collapsed-school-logo {
+ width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  background: #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.answer-page .collapsed-school-logo-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.answer-page .expand-sidebar-button {
+   width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: 1px solid #dedede;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #666666;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.answer-page .expand-sidebar-button:hover {
+   background: #f5f5f5;
+  border-color: #cfcfcf;
+  color: #303030;
+}
+
+/* ==========================================================================
+   Expanded sidebar
+   ========================================================================== */
+
+.answer-page .sidebar {
+  position: fixed;
+
+  top: 12px;
+  left: 12px;
+  bottom: 12px;
+
+  width: 304px;
+
+  padding: 20px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  display: none;
+  flex-direction: column;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  z-index: 50;
+  
+}
+
+.answer-page.sidebar-expanded .sidebar {
+  display: flex;
+}
+
+.answer-page .sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 4px 4px 18px;
+}
+
+/* Same logo asset + className as Home.js's logo-row (replacing the old
+   plain-text "VedaAI" label). */
+.answer-page .sidebar-header .logo {
+  height: 28px;
+  width: auto;
+
+  object-fit: contain;
+}
+
+.answer-page .collapse-sidebar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: var(--radius-sm);
+
+  color: var(--text-secondary);
+}
+
+.answer-page .collapse-sidebar-button:hover {
+  background: var(--bg-app);
+}
+
+.answer-page .toolkit-button {
+  width: 100%;
+  height: 42px;
+
+  margin-top: clamp(24px, 6vh, 100px);
+  padding: 0 16px;
+
+  border: 4px solid transparent;
+  border-radius: 28px;
+
+  background:
+    linear-gradient(#303030, #303030) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+
+}
+
+.answer-page .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.answer-page .navigation-item {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  border-radius: var(--radius-sm);
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.answer-page .navigation-item:hover {
+  background: var(--bg-app);
+  color: var(--text-primary);
+}
+
+.answer-page .navigation-item.active {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.answer-page .sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: auto;
+  padding-top: 12px;
+
+  gap: 12px;
+
+  border-top: 1px solid var(--border);
+}
+
+.answer-page .school-card {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--bg-app);
+}
+
+.answer-page .school-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-panel);
+
+  overflow: hidden;
+}
+
+.answer-page .school-logo-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.answer-page .school-info {
+  display: flex;
+  flex-direction: column;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.answer-page .school-info strong {
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.answer-page .sidebar-backdrop {
+  display: none;
+}
+
+
+/* Expanded sidebar: move the main content instead of letting the sidebar
+   cover the page. */
+.answer-page.sidebar-expanded .main-content {
+  width: calc(100% - 328px);
+  margin-left: 316px;
+}
+
+/* ==========================================================================
+   Main content / navbar
+   ========================================================================== */
+
+.answer-page .main-content {
+  width: calc(100% - 84px);
+  height: 100%;
+
+  margin-left: 84px;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  overflow: hidden;
+}
+
+.answer-page .navbar {
+width: 100%;
+  min-height: 56px;
+
+  padding: 8px 12px 8px 24px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+.answer-page .navbar-left,
+.answer-page .navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.answer-page .navbar-left {
+  gap: 14px;
+}
+
+.answer-page .navbar-right {
+  gap: 6px;
+}
+
+.answer-page .back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  color: var(--text-secondary);
+}
+
+.answer-page .back-button:hover {
+  background: var(--bg-app);
+}
+
+.answer-page .page-title {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Same "Ic.png" icon + "exam" className as Home.js's navbar-title. */
+.answer-page .page-title .exam {
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+}
+
+.answer-page .mobile-title {
+  display: none;
+}
+
+.answer-page .navbar-icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  color: var(--text-secondary);
+}
+
+.answer-page .navbar-icon:hover {
+  background: var(--bg-app);
+}
+
+/* Help / Notifications / Premium icons: same "ii" className and 20x20
+   size as the lucide icons they replace (and as Home.js's navbar-icon
+   images). */
+.answer-page .ii {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+}
+
+.answer-page .navbar-icon-dot {
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+
+  width: 7px;
+  height: 7px;
+
+  border: 1.5px solid var(--bg-panel);
+  border-radius: 50%;
+
+  background: var(--brand);
+}
+
+.answer-page .profile {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 8px;
+  padding: 5px 10px 5px 6px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+}
+
+.answer-page .profile:hover {
+  background: var(--bg-app);
+}
+
+/* Profile avatar is now an actual <img> (prof.png, same as Home.js's
+   profile-img), so this sizes/crops the image itself instead of a
+   fake-initials circle. */
+.answer-page .profile-image {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.answer-page .profile p {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.answer-page .profile-chevron {
+  color: var(--text-secondary);
+}
+
+.answer-page .mobile-menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Result area
+   ========================================================================== */
+
+.answer-page .result-shell {
+  flex: 1;
+
+  min-height: 0;
+  padding: 24px;
+
+  overflow: hidden;
+}
+
+.answer-page .state-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 460px;
+
+  gap: 10px;
+
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.answer-page .state-panel h2 {
+  margin: 4px 0 0;
+
+  color: var(--text-primary);
+
+  font-size: 18px;
+}
+
+.answer-page .state-panel--error {
+  color: var(--score-zero-text);
+}
+
+.answer-page .state-panel--error p {
+  max-width: 420px;
+  color: var(--text-secondary);
+}
+
+.answer-page .primary-button {
+  margin-top: 10px;
+  padding: 10px 22px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--panel-dark);
+  color: #fff;
+
+  font-weight: 600;
+}
+
+.answer-page .spin {
+  color: var(--brand);
+  animation: answer-page-spin 0.9s linear infinite;
+}
+
+@keyframes answer-page-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Mobile Questions / Answer Sheet toggle
+   Hidden on desktop; only shown once the review layout switches to a
+   single-pane mobile view (see the max-width: 860px block below).
+   ========================================================================== */
+
+.answer-page .mobile-view-toggle {
+  display: none;
+}
+
+/* ==========================================================================
+   Review layout
+   ========================================================================== */
+
+.answer-page .review-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  height: 100%;
+
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Questions pane
+   ========================================================================== */
+
+.answer-page .questions-pane {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  background: var(--bg-panel);
+}
+
+.answer-page .questions-pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-shrink: 0;
+
+  gap: 12px;
+
+  padding: 18px 20px 14px;
+}
+
+.answer-page .questions-pane-header h1 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.answer-page .expand-all-button {
+  flex-shrink: 0;
+
+  padding: 8px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.answer-page .expand-all-button:hover {
+  background: var(--bg-app);
+}
+
+.answer-page .status-banner {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  margin: 0 20px 16px;
+  padding: 10px 14px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--score-full-bg);
+  color: var(--score-full-text);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.answer-page .question-list {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  gap: 12px;
+
+  margin: 0;
+  padding: 0 20px 20px;
+
+  overflow-y: auto;
+
+  list-style: none;
+}
+
+.answer-page .question-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: var(--bg-panel);
+  box-shadow: var(--shadow-card);
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.answer-page .question-card.is-active {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.answer-page .question-card--part {
+  box-shadow: none;
+}
+
+.answer-page .question-card-header {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  text-align: left;
+}
+
+.answer-page .question-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: var(--panel-dark);
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.answer-page .question-number--letter {
+  background: var(--text-muted);
+}
+
+/* Small pill for the "(a)" / "(b)" part of a question number like
+   "11 (a)" - shown next to the main number circle rather than nested
+   underneath it, since the backend treats sub-parts as flat, separate
+   questions. */
+.answer-page .question-letter-badge {
+  flex-shrink: 0;
+
+  padding: 2px 7px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-app);
+  color: var(--text-secondary);
+
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.answer-page .question-text {
+  flex: 1;
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.answer-page .continues-tag {
+  flex-shrink: 0;
+
+  padding: 2px 8px;
+
+  border-radius: 999px;
+
+  background: var(--score-partial-bg);
+  color: var(--score-partial-text);
+
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.answer-page .question-chevron {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Score pills
+   ========================================================================== */
+
+.answer-page .score-pill {
+  flex-shrink: 0;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.answer-page .score-pill--full {
+  background: var(--score-full-bg);
+  color: var(--score-full-text);
+}
+
+.answer-page .score-pill--partial {
+  background: var(--score-partial-bg);
+  color: var(--score-partial-text);
+}
+
+.answer-page .score-pill--zero {
+  background: var(--score-zero-bg);
+  color: var(--score-zero-text);
+}
+
+.answer-page .score-pill--unknown {
+  background: var(--score-unknown-bg);
+  color: var(--score-unknown-text);
+}
+
+/* ==========================================================================
+   Feedback
+   ========================================================================== */
+
+.answer-page .ai-feedback {
+  margin: 0 16px 16px;
+  padding: 14px 16px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-app);
+}
+
+.answer-page .ai-feedback h4 {
+  margin: 0 0 6px;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.answer-page .ai-feedback p {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.answer-page .question-parts {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 0 12px 12px;
+
+  list-style: none;
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.answer-page .empty-state {
+  margin: 0 20px 20px;
+  padding: 40px 24px;
+
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+
+  color: var(--text-secondary);
+
+  text-align: center;
+}
+
+.answer-page .empty-state h3 {
+  margin: 0 0 6px;
+  color: var(--text-primary);
+}
+
+.answer-page .empty-state pre {
+  margin-top: 16px;
+  padding: 12px;
+
+  overflow: auto;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-app);
+
+  font-size: 12px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   Unmatched answers
+   ========================================================================== */
+
+.answer-page .unmatched-panel {
+  margin: 0 20px 20px;
+  padding: 16px 18px;
+
+  border: 1px solid var(--score-partial-bg);
+  border-radius: var(--radius-md);
+
+  background: var(--score-partial-bg);
+}
+
+.answer-page .unmatched-panel h3 {
+  margin: 0 0 4px;
+
+  color: var(--score-partial-text);
+
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.answer-page .unmatched-panel > p {
+  margin: 0 0 10px;
+
+  color: var(--text-secondary);
+
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.answer-page .unmatched-panel ul {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.answer-page .unmatched-item {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  padding: 8px 10px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-panel);
+
+  font-size: 12.5px;
+}
+
+.answer-page .unmatched-item-label {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.answer-page .unmatched-item-meta {
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Answer sheet
+   ========================================================================== */
+
+.answer-page .answer-sheet-pane {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.answer-page .answer-sheet-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-shrink: 0;
+
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  background: var(--panel-dark);
+  color: var(--panel-dark-text);
+}
+
+.answer-page .answer-sheet-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.answer-page .answer-sheet-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.answer-page .zoom-control,
+.answer-page .page-control {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.answer-page .zoom-control button,
+.answer-page .page-control button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+
+  color: inherit;
+}
+
+.answer-page .zoom-control button:hover,
+.answer-page .page-control button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.answer-page .page-control button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.answer-page .page-control span {
+  white-space: nowrap;
+}
+
+.answer-page .answer-sheet-viewport {
+  display: flex;
+  justify-content: center;
+
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 20px;
+
+  overflow: auto;
+
+  background: #e9eaee;
+}
+
+.answer-page .answer-sheet-page {
+  position: relative;
+
+  flex-shrink: 0;
+
+  height: fit-content;
+  max-width: none;
+
+  box-shadow: 0 2px 10px rgba(16, 20, 30, 0.12);
+}
+
+.answer-page .answer-sheet-page img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 4px;
+}
+
+.answer-page .answer-highlight {
+  position: absolute;
+
+  border: 2px solid var(--score-full-text);
+  border-radius: 6px;
+
+  background: rgba(34, 197, 94, 0.12);
+
+  pointer-events: none;
+}
+
+.answer-page .answer-highlight-tag {
+  position: absolute;
+
+  top: -12px;
+  left: 10px;
+
+  padding: 2px 8px;
+
+  border-radius: 4px;
+
+  background: var(--score-full-text);
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.answer-page .answer-sheet-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  max-width: 420px;
+  padding: 20px;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.answer-page .answer-sheet-empty code {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 4px 8px;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--bg-panel);
+  color: var(--score-zero-text);
+
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.answer-page .answer-sheet-page img {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .answer-page .result-shell {
+    overflow: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .answer-page .collapsed-sidebar {
+    display: none;
+  }
+
+  .answer-page .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+
+    z-index: 40;
+
+    display: flex;
+
+    transform: translateX(-100%);
+
+    box-shadow: 0 0 0 1px var(--border);
+
+    transition: transform 0.2s ease;
+  }
+
+  .answer-page .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .answer-page .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+
+    z-index: 30;
+
+    display: block;
+
+    background: rgba(15, 17, 23, 0.4);
+  }
+
+  .answer-page .navbar {
+    padding: 8px 10px 8px 12px;
+  }
+
+  .answer-page .navbar-left {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .answer-page .page-title {
+    min-width: 0;
+  }
+
+  .answer-page .page-title span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .answer-page .desktop-title {
+    display: none;
+  }
+
+  .answer-page .mobile-title {
+    display: inline;
+  }
+
+  .answer-page .profile p {
+    display: none;
+  }
+
+  .answer-page .mobile-menu-button {
+    display: flex;
+  }
+
+  .answer-page .main-content {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    min-width: 0;
+  }
+
+  .answer-page .result-shell {
+    min-height: 0;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  /* Pill toggle that swaps between the Questions pane and the
+     Answer Sheet pane, matching the phone mock. */
+  .answer-page .mobile-view-toggle {
+    display: flex;
+    align-items: center;
+
+    gap: 2px;
+
+    margin-bottom: 14px;
+    padding: 4px;
+
+    border-radius: 999px;
+
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+  }
+
+  .answer-page .mobile-view-toggle-button {
+    flex: 1;
+
+    padding: 10px 0;
+
+    border-radius: 999px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .answer-page .mobile-view-toggle-button.active {
+    background: var(--panel-dark);
+    color: #fff;
+  }
+
+  /* Only one pane is visible at a time on mobile; the toggle
+     above controls which one via the mobile-view-* class. */
+  .answer-page .review-layout {
+    display: block;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .answer-page .questions-pane,
+  .answer-page .answer-sheet-pane {
+    display: none;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .answer-page .review-layout.mobile-view-questions
+    .questions-pane {
+    display: flex;
+  }
+
+  .answer-page .review-layout.mobile-view-answer-sheet
+    .answer-sheet-pane {
+    display: flex;
+  }
+}

@@ -1,0 +1,1384 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+/* =====================================================
+   APP SHELL
+   Mobile-first: single column, sidebar becomes an
+   off-canvas drawer. From 1024px up, sidebar sits
+   inline next to the main column (original desktop look).
+===================================================== */
+
+.app {
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: clamp(8px, 1.2vw, 12px);
+  padding: clamp(8px, 1.2vw, 12px);
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   SIDEBAR BACKDROP (mobile drawer only)
+===================================================== */
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  z-index: 40;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+  position: fixed;
+  top: clamp(8px, 1.2vw, 12px);
+  left: clamp(8px, 1.2vw, 12px);
+  bottom: clamp(8px, 1.2vw, 12px);
+
+  z-index: 50;
+
+  width: min(304px, 84vw);
+  height: auto;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  transform: translateX(calc(-100% - 24px));
+  transition: transform 0.25s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo-row {
+  position: relative;
+
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 136px;
+  height: 40px;
+  max-width: 60%;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+.collapse-icon {
+  color: #777;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* =====================================================
+   TOOLKIT BUTTON
+===================================================== */
+
+.toolkit-btn {
+  width: 100%;
+  height: 42px;
+
+  margin-top: clamp(24px, 6vh, 100px);
+
+  padding: 0 16px;
+
+  background:
+    linear-gradient(#303030, #303030) padding-box,
+    linear-gradient(
+      180deg,
+      #ff7950 0%,
+      #c0350a 100%
+    ) border-box;
+
+  border: 4px solid transparent;
+  border-radius: 28px;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.toolkit-btn svg {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.tot {
+  font-family: "Inter", sans-serif;
+
+  font-weight: 500;
+
+  font-size: clamp(13px, 1.1vw, 16px);
+
+  line-height: 28px;
+
+  letter-spacing: -0.64px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation {
+  width: 100%;
+
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 16px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.64px;
+
+  flex-shrink: 0;
+}
+
+.nav-item {
+  width: 100%;
+  height: 38px;
+
+  padding: 9px 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  border-radius: 8px;
+
+  color: #7b7b7b;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+.nav-item.active {
+  background: #eeeeee;
+  color: #252525;
+}
+
+.nav-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+
+  display: block;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   SIDEBAR BOTTOM
+===================================================== */
+
+.sidebar-bottom {
+  width: 100%;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+}
+
+.settings {
+  width: 100%;
+  height: 38px;
+
+  margin-bottom: 18px;
+
+  padding: 8px 12px;
+
+  gap: 8px;
+}
+
+.too {
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 400;
+
+  font-size: 16px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.64px;
+}
+
+/* =====================================================
+   SCHOOL CARD
+===================================================== */
+
+.school-card {
+  width: 100%;
+  height: 84px;
+
+  padding: 12px 14px;
+
+  background: #f0f0f0;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+.school-logo {
+  width: 59px;
+  height: 60px;
+
+  background: #ffffff;
+
+  border-radius: 25%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+}
+
+.school-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.school-info {
+  flex: 1 1 auto;
+  height: 44px;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  overflow: hidden;
+}
+.image-preview {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.school-info strong {
+  display: block;
+
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 700;
+
+  font-size: 16px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.64px;
+
+  color: #333333;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.school-info span {
+  display: block;
+
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 400;
+
+  font-size: 14px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.56px;
+
+  color: #777777;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   MAIN COLUMN (navbar + content stacked)
+===================================================== */
+
+.main-column {
+  flex: 1 1 auto;
+
+  min-width: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(8px, 1.2vw, 15px);
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   TOP NAVBAR
+===================================================== */
+
+.navbar {
+  width: 100%;
+  min-height: 56px;
+
+  flex-shrink: 0;
+
+  padding: 8px clamp(10px, 2vw, 24px);
+
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   NAVBAR LEFT
+===================================================== */
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: clamp(6px, 1vw, 16px);
+
+  min-width: 0;
+}
+
+.back-btn {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: #f5f5f5;
+}
+
+.navbar-title {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: clamp(16px, 1.6vw, 20px);
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  color: #303030;
+
+  white-space: nowrap;
+
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exam {
+  width: 20px;
+  height: 20px;
+
+  display: block;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+/* Desktop shows the page title ("Exams"); mobile falls back to the
+   brand name, matching the phone mockup where the icon+label pair
+   is replaced by "VedaAI". */
+.title-mobile {
+  display: none;
+}
+
+/* =====================================================
+   NAVBAR RIGHT
+===================================================== */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+
+  gap: clamp(4px, 1vw, 12px);
+
+  flex-shrink: 0;
+}
+
+.navbar-icon {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.navbar-icon:hover {
+  background: #f5f5f5;
+}
+
+.navbar-icon img {
+  width: 36px;
+  height: 36px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+/* Hamburger lives in navbar-right (next to the avatar) and is only
+   shown below the desktop breakpoint, per the mobile mockup. */
+.menu-btn {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  color: #303030;
+}
+
+.menu-btn:hover {
+  background: #f5f5f5;
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-left: 8px;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
+
+.profile-img {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+}
+
+.profile p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #303030;
+}
+
+.profile svg {
+  color: #777777;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   MAIN CENTER AREA
+===================================================== */
+
+.center {
+  flex: 1 1 auto;
+
+  min-height: 0;
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(12px, 3vw, 24px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   CONTENT WRAPPER
+===================================================== */
+
+.kk {
+  width: 100%;
+  max-width: 789px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: clamp(14px, 2.2vw, 20px);
+
+  margin: auto;
+}
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.cword {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.blck {
+  width: 100%;
+
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+
+  font-size: clamp(24px, 4.4vw, 40px);
+
+  line-height: 120%;
+
+  letter-spacing: -0.04em;
+
+  color: #303030;
+
+  text-align: center;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  row-gap: 4px;
+}
+
+.ornge {
+  margin-left: 10px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+
+  font-size: clamp(24px, 4.4vw, 40px);
+
+  line-height: 120%;
+
+  letter-spacing: -0.04em;
+
+  color: #ff5623;
+
+  display: inline;
+}
+
+/* =====================================================
+   SUBTITLE
+===================================================== */
+
+.subtitle {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 400;
+
+  font-size: clamp(15px, 1.8vw, 20px);
+
+  line-height: 140%;
+
+  letter-spacing: -0.8px;
+
+  text-align: center;
+
+  color: #303030;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   LADY IMAGE
+===================================================== */
+
+.lady {
+  width: clamp(90px, 14vw, 138px);
+  height: clamp(90px, 14vw, 138px);
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.lady img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+/* =====================================================
+   UPLOAD CARDS CONTAINER
+===================================================== */
+
+.king {
+  width: 100%;
+
+  border-radius: 24px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: stretch;
+  justify-content: center;
+
+  gap: 20px;
+
+  padding: 4px;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   QUESTION PAPER / ANSWER SHEET CARDS
+===================================================== */
+
+.questions,
+.questionss {
+  flex: 1 1 280px;
+  max-width: 374.5px;
+
+  min-height: 160px;
+  height: clamp(160px, 22vw, 181px);
+
+  border-radius: 20px;
+
+  border: 1.5px dashed #d9d9d9;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.questions:hover,
+.questionss:hover {
+  background: rgba(255, 255, 255, 0.75);
+
+  border-color: #ff5623;
+}
+
+/* Once a file is attached, the box is no longer a click target and
+   shouldn't show the hover/pointer affordance of an empty dropzone. */
+.questions.filled,
+.questionss.filled {
+  cursor: default;
+  padding: 16px;
+}
+
+.questions.filled:hover,
+.questionss.filled:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #d9d9d9;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* =====================================================
+   FILLED FILE CARD
+===================================================== */
+
+.file-card {
+  position: relative;
+
+  width: 100%;
+
+  padding: 14px 40px 14px 14px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.pdf-icon {
+  width: 40px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  border-radius: 6px;
+
+  background: #ef4136;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 700;
+
+  font-size: 10px;
+
+  letter-spacing: 0.02em;
+}
+
+.file-info {
+  flex: 1 1 auto;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.file-name {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  line-height: 130%;
+
+  color: #303030;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-align: left;
+}
+
+.file-meta {
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 400;
+
+  font-size: 13px;
+
+  line-height: 130%;
+
+  color: #888888;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 24px;
+  height: 24px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #303030;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.remove-btn:hover {
+  background: #1c1c1c;
+}
+
+/* =====================================================
+   UPLOAD ICON
+===================================================== */
+
+.kil {
+  width: 48px;
+  height: 48px;
+
+  background: #f0f0f0;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.kil img {
+  width: 20px;
+  height: 20px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+.blk {
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 600;
+
+  font-size: clamp(16px, 1.9vw, 20px);
+
+  line-height: 22px;
+
+  letter-spacing: -0.06em;
+
+  white-space: nowrap;
+
+  color: #303030;
+
+  text-align: center;
+}
+
+.orr {
+  margin-left: 4px;
+
+  color: #ff5623;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 600;
+
+  font-size: clamp(16px, 1.9vw, 20px);
+
+  line-height: 22px;
+
+  letter-spacing: -0.06em;
+}
+
+
+
+.max-size {
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 20px;
+
+  color: #888888;
+}
+
+
+
+.map {
+  width: 100%;
+  max-width: 410px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+
+.mapp {
+  width: auto;
+  min-width: 161px;
+  max-width: 100%;
+
+  height: 44px;
+
+  padding: 12px 22px;
+
+  border: 2px solid #303030;
+
+  border-radius: 64px;
+
+  background: #ffffff;
+
+  opacity: 0.25;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 500;
+
+  font-size: 14px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.02em;
+
+  text-align: center;
+
+  color: #303030;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  cursor: not-allowed;
+
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.mapp.enabled {
+  border-color: transparent;
+
+  background: #1c1c1c;
+
+  color: #ffffff;
+
+  opacity: 1;
+
+  cursor: pointer;
+}
+
+.mapp.enabled:hover {
+  background: #303030;
+}
+
+
+
+.map p {
+  width: 100%;
+
+  margin: 0;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  font-weight: 500;
+
+  font-size: 14px;
+
+  line-height: 140%;
+
+  letter-spacing: -0.04em;
+
+  text-align: center;
+
+  color: #777777;
+
+  white-space: normal;
+}
+
+
+
+@media (min-width: 1024px) {
+
+  .sidebar-backdrop {
+    display: none;
+  }
+
+  .sidebar {
+    position: static;
+    z-index: auto;
+
+    width: 280px;
+    max-width: 280px;
+
+    transform: none;
+    transition: none;
+  }
+
+  .menu-btn {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sidebar {
+    width: 304px;
+    max-width: 304px;
+  }
+}
+
+
+
+@media (max-width: 1023.98px) {
+
+  .menu-btn {
+    display: flex;
+  }
+}
+
+
+
+@media (max-width: 640px) {
+
+  .app {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .navbar {
+    padding: 8px 10px;
+  }
+
+  
+  .title-desktop,
+  .exam {
+    display: none;
+  }
+
+  .title-mobile {
+    display: inline;
+  }
+
+  .icon-help,
+  .icon-premium {
+    display: none;
+  }
+
+  .profile p,
+  .profile-chevron {
+    display: none;
+  }
+
+  .king {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .questions,
+  .questionss {
+    max-width: 100%;
+    height: 140px;
+  }
+
+  .questions.filled,
+  .questionss.filled {
+    height: auto;
+    min-height: 140px;
+  }
+
+  .blk {
+    white-space: normal;
+  }
+
+  .file-card {
+    padding: 12px 36px 12px 12px;
+    gap: 10px;
+  }
+
+  .pdf-icon {
+    width: 34px;
+    height: 38px;
+    font-size: 9px;
+  }
+
+  .file-name {
+    font-size: 14px;
+  }
+
+  .file-meta {
+    font-size: 12px;
+  }
+
+  .remove-btn {
+    top: -6px;
+    right: -6px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar-right {
+    gap: 4px;
+  }
+
+  .navbar-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .navbar-icon img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+}
