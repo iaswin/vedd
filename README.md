@@ -12,7 +12,7 @@ The application allows a teacher to upload a question paper and a student's hand
 * 📝 Handwritten answer extraction
 * 🔗 Automatic question-to-answer mapping
 
-## 🧠 AI Model
+🧠 AI Model
 
 The application uses **Google Gemini Flash 3.5** for AI-powered extraction, answer understanding, mapping, and prediction/assessment.
 
@@ -69,10 +69,7 @@ The system is designed to handle:
 * Answers written out of order
 * Unanswered questions
 * Answers that don't match a question
-* Answers spanning multiple pages
-*
-*
-  
+* Answers spanning multiple pages  
   Region Highlighting
 
 When a teacher selects a question, the application identifies the corresponding answer and highlights its exact region on the answer sheet.
