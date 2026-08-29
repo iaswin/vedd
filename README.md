@@ -14,7 +14,7 @@ The application allows a teacher to upload a question paper and a student's hand
 
 🧠 AI Model
 
-The application uses **Google Gemini Flash 3.5** for AI-powered extraction, answer understanding, mapping, and prediction/assessment.
+The application uses OpenAI model for AI-powered extraction, answer understanding, mapping, and prediction/assessment.
 
 
 
