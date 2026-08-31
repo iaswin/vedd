@@ -1,3 +1,4 @@
+
 VedaAI — AI Assessment Extraction & Answer Mapping
 
 VedaAI is an AI-powered assessment analysis application built for the VedaAI Hiring Assignment
@@ -76,6 +77,6 @@ When a teacher selects a question, the application identifies the corresponding 
 
 This allows the teacher to visually verify the mapping.
 
-
+<img width="1896" height="873" alt="Screenshot 2026-08-31 183401" src="https://github.com/user-attachments/assets/e22da128-bc5d-4e50-b343-31b0254587a2" />
 
 
